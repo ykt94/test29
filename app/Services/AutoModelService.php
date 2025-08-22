@@ -3,15 +3,16 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Models\Brand;
+use App\Models\AutoModel;
 use Illuminate\Database\Eloquent\Collection;
 
-class BrandService
+class AutoModelService
 {
 
     public function getMany(): Collection {
 
-        return Brand::get();
+
+        return AutoModel::with('brand')->get();
     }
 
 }

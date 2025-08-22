@@ -2,11 +2,11 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Brand;
+use App\Models\AutoModel;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BrandResource extends JsonResource
+class AutoModelResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,12 +15,13 @@ class BrandResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        /** @var Brand $model */
+        /** @var AutoModel $model */
         $model = $this->resource;
 
         return [
             'id' => $model->id,
             'name' => $model->name,
-            ];
+            'brand' => new BrandResource($this->whenLoaded('brand')),
+        ];
     }
 }

@@ -16,12 +16,7 @@ class BrandController extends Controller
 
     public function index(Request $request): AnonymousResourceCollection
     {
-        $models = $this->brandService->getMany(
-            filters: $request->all(),
-            with: explode(',', $request->get('with', '')),
-            orderBy: $request->get('orderBy', 'id'),
-            perPage: (int)$request->get('perPage', 20),
-        );
+        $models = $this->brandService->getMany();
 
         return BrandResource::collection($models);
     }
